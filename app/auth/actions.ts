@@ -1,7 +1,6 @@
+// app/auth/actions.ts
 'use server';
 
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 
 export async function login(formData: FormData) {
@@ -10,10 +9,11 @@ export async function login(formData: FormData) {
   const password = formData.get('password') as string;
 
   const { error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error) return { error: error.message };
+  if (error) {
+    return { error: error.message };
+  }
 
-  revalidatePath('/', 'layout');
-  redirect('/dashboard');
+  return { success: true };
 }
 
 export async function signup(formData: FormData) {
@@ -21,15 +21,28 @@ export async function signup(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  const { error } = await supabase.auth.signUp({ email, password });
-  if (error) return { error: error.message };
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
 
-  return { success: 'Account created! You can now log in.' };
+  if (error) {
+    return { error: error.message };
+  }
+
+  // If email confirmation is disabled in Supabase, session is active immediately
+  if (data?.session) {
+    return { success: true, redirect: true };
+  }
+
+  // If email confirmation is still enabled in Supabase
+  return { 
+    success: true, 
+    message: 'Account created! Please check your email to confirm your account.' 
+  };
 }
 
 export async function logout() {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  revalidatePath('/', 'layout');
-  redirect('/auth');
 }
