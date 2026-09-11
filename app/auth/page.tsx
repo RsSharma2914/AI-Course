@@ -17,33 +17,25 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link
+            <a
               href="/auth"
               className="text-xs font-semibold text-slate-300 hover:text-white transition"
             >
               Sign In
-            </Link>
-            <Link
+            </a>
+            <a
               href="/auth"
               className="rounded-lg bg-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-md shadow-indigo-600/30 hover:bg-indigo-500 transition"
             >
               Get Started
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
       <main className="relative overflow-hidden pt-24 pb-20 px-6">
-        {/* Ambient Glows */}
-        <div className="pointer-events-none absolute left-1/2 -top-24 -translate-x-1/2 h-96 w-96 rounded-full bg-indigo-500/20 blur-3xl" />
-        <div className="pointer-events-none absolute right-1/4 top-1/2 h-72 w-72 rounded-full bg-blue-600/15 blur-3xl" />
-
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-xs font-semibold text-indigo-300 backdrop-blur-sm">
-            <span>✨ Practical On-Demand Learning</span>
-          </div>
-
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
             Build projects that matter. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">
@@ -52,46 +44,25 @@ export default function Home() {
           </h1>
 
           <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed">
-            Curated, self-paced courses designed to take you from foundational basics to real-world deployment. Enroll instantly to start learning.
+            Curated, self-paced courses designed to take you from foundational basics to real-world deployment.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
-            <Link
+            <a
               href="/dashboard"
-              className="w-full sm:w-auto rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:brightness-110 transition active:scale-[0.98]"
+              className="w-full sm:w-auto rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:brightness-110 transition"
             >
               Browse Course Catalog →
-            </Link>
-            <Link
+            </a>
+            <a
               href="/auth"
               className="w-full sm:w-auto rounded-xl border border-slate-800 bg-slate-900/80 px-6 py-3 text-sm font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition"
             >
               Create Free Account
-            </Link>
-          </div>
-
-          {/* Quick Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-16 max-w-3xl mx-auto text-left">
-            <div className="rounded-xl border border-slate-800/80 bg-slate-900/50 p-5 backdrop-blur-sm">
-              <div className="text-xl font-bold text-white">Full-Stack Tech</div>
-              <p className="text-xs text-slate-400 mt-1">From React & Next.js to backend APIs and databases.</p>
-            </div>
-            <div className="rounded-xl border border-slate-800/80 bg-slate-900/50 p-5 backdrop-blur-sm">
-              <div className="text-xl font-bold text-white">Self-Paced</div>
-              <p className="text-xs text-slate-400 mt-1">Study around your schedule with lifetime access.</p>
-            </div>
-            <div className="rounded-xl border border-slate-800/80 bg-slate-900/50 p-5 backdrop-blur-sm">
-              <div className="text-xl font-bold text-white">100% Free Tiers</div>
-              <p className="text-xs text-slate-400 mt-1">Enroll and manage your registered courses with one click.</p>
-            </div>
+            </a>
           </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-slate-900 py-8 text-center text-xs text-slate-500">
-        © 2026 SkillForge Academy. Powered by Next.js and Supabase.
-      </footer>
     </div>
   );
 }
